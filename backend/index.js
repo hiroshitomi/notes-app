@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://notes-app-backend-gamma.vercel.app/",
+    origin: "https://hirito-notes.vercel.app/",
     // origin: "*",
   })
 );
