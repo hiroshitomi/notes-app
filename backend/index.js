@@ -19,8 +19,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://hirito-notes.vercel.app/",
-    // origin: "*",
+    origin: ["http://hirito-notes.vercel.app/", "*"],
+    preflightContinue: false,
+    credentials: true,
+    
   })
 );
 
