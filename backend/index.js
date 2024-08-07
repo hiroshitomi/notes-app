@@ -12,6 +12,8 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
+const port = process.env.PORT || 8000
+
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
 
@@ -21,8 +23,6 @@ app.use(
   cors({
     origin: ["http://hirito-notes.vercel.app/", "*"],
     preflightContinue: false,
-    credentials: true,
-    
   })
 );
 
@@ -317,6 +317,6 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 })
 
-app.listen(8000);
+app.listen(port);
 
 module.exports = app;
