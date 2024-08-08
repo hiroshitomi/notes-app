@@ -23,7 +23,8 @@ app.use(
   cors({
     origin: ["https://hirito-notes.vercel.app","*"],
     methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
+    credentials: true,
+
   })
 );
 
@@ -33,6 +34,8 @@ app.get("/", (req, res) => {
 
 //Create Account
 app.post("/create-account", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  
   const { fullName, email, password } = req.body;
 
   if (!fullName) {
