@@ -23,6 +23,7 @@ app.use(
   cors({
     origin: ["https://hirito-notes.vercel.app","*"],
     methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
   })
 );
