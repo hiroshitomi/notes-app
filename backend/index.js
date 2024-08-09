@@ -12,7 +12,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-const port = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000
 
 const jwt = require("jsonwebtoken");
 const { authenticateToken } = require("./utilities");
@@ -21,12 +21,15 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: ["https://hirito-notes.vercel.app","*"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
+    //"https://hirito-notes.vercel.app"
+    // origin: "http://localhost:5173",
+    origin: "*",
+
+    // methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD"],
     credentials: true,
-    allowedHeaders: [
-      'Content-Type', 'Authorization'
-    ]
+    // allowedHeaders: [
+    //   'Content-Type', 'Authorization'
+    // ]
 
   })
 );
@@ -323,6 +326,9 @@ app.get("/search-notes/", authenticateToken, async (req, res) => {
   }
 })
 
-app.listen(port);
+app.listen(PORT, () =>{
+  console.log(`Server running on port:${PORT}`)
+  
+});
 
 module.exports = app;
